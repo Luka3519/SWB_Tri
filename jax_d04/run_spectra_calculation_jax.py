@@ -234,17 +234,20 @@ def run_spectra_calculation_jax(L1: int,
             )
             
             spectral_data_list.append(spec.T)
-        
+        total_spectral_data = jnp.sum(jnp.stack(spectral_data_list), axis=0)
+        spectral_data_list.append(total_spectral_data)
+        channel_names.append('Total')
         # 使用与色散关系相同的高对称点标签
         # 绘制光谱函数
         
         # 设置强度范围（可选）
         # 格式: [(vmin, vmax), ...] 对应每个通道
         intensity_ranges = [
-            (0, 10),  # All Channels: 所有通道强度较大
-            (0, 10),  # Sz Channel: 纵向通道
-            (0, 10)   # Sx+Sy Channel: 横向通道
-        ]
+        (0, 10),  # Sx
+        (0, 10),  # Sz
+        (0, 10),  # Sy
+        (0, 10),  # Total
+    ]
         
         fig2 = plot_multiple_spectral_channels(
             k_distances_spectral, omega_idx,
