@@ -174,7 +174,7 @@ def calculate_spectral_single_omega(omega: float, kpath: jnp.ndarray, eta: float
             spectrum = spectrum + channel[mu, nu] * channel_spectrum
     
     # 取虚部作为光谱强度（动态磁化率虚部）
-    spectrum = -jnp.imag(spectrum) / Nsites
+    spectrum = -jnp.imag(spectrum) / (jnp.pi * Nsites)
     
     return spectrum
 
