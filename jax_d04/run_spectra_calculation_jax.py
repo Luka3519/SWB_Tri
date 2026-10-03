@@ -230,7 +230,7 @@ def run_spectra_calculation_jax(L1: int,
                 A1, A2, A3, B1, B2, B3, lambda_param, h,
                 k1, k2, Q1, Q2,
                 J1plus, J2plus, J3plus,
-                beta
+                beta=beta
             )
             
             spectral_data_list.append(spec.T)
