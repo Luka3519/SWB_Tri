@@ -147,7 +147,7 @@ def calculate_spectral_single_omega(omega: float, kpath: jnp.ndarray, eta: float
                 return f * trace_val
             
             # 对 m 维度向量化
-            m_array = jnp.arange(15)
+            m_array = jnp.arange(16)
             contributions = jax.vmap(compute_for_m)(m_array)
             
             return jnp.sum(contributions)
